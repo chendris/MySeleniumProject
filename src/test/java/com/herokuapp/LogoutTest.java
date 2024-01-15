@@ -7,9 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoginTest {
+public class LogoutTest {
     @Test
-    public void login(){
+    public void logout(){
         //deschide pagina form authenticator
         WebDriver driver = new ChromeDriver();
         String url = "https://the-internet.herokuapp.com/";
@@ -33,16 +33,15 @@ public class LoginTest {
         loginButton.click();
 
         //login check
-        WebElement success = driver.findElement(By.xpath("//*[@id=\"content\"]/div/h4"));
-        Assert.assertEquals(success.getText(),"Welcome to the Secure Area. When you are done click logout below.");
+        WebElement logoutButton = driver.findElement(By.xpath("//*[@id=\"content\"]/div/a/i"));
+        logoutButton.click();
+
+        WebElement logout = driver.findElement(By.xpath("/html/body/div[1]/div/div"));
+        String successLogoutMsg="You logged out of the secure area!";
+        Assert.assertTrue(logout.getText().contains(successLogoutMsg));
         driver.close();
     }
-    public static void sleep(int millisec){
-        try {
-            Thread.sleep(millisec);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
+
 
 }
