@@ -18,5 +18,11 @@
             <class name="com.herokuapp.LogoutTest"/>
         </classes>
     </test>
+    
+    <test name="Dropdown test">
+        <classes>
+            <class name="com.herokuapp.DropdownTest"/>
+        </classes>
+    </test>
 
 </suite>

@@ -5,11 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class LogoutTest {
     @Test
-    public void logout(){
+    @Parameters({"usernameP","passwordP","successP"})
+    public void logout(String usernameP, String paswordP,String successP){
         //deschide pagina form authenticator
         WebDriver driver = new ChromeDriver();
         String url = "https://the-internet.herokuapp.com/";
@@ -22,11 +24,11 @@ public class LogoutTest {
 
         //introducere username
         WebElement username=driver.findElement(By.xpath("//*[@id=\"username\"]"));
-        username.sendKeys("tomsmith");
+        username.sendKeys(usernameP);
 
         //introducere parola
         WebElement password = driver.findElement(By.xpath("//*[@id=\"password\"]"));
-        password.sendKeys("SuperSecretPassword!");
+        password.sendKeys(paswordP);
 
         //click pe butonul de login
         WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"login\"]/button/i"));
@@ -37,9 +39,9 @@ public class LogoutTest {
         logoutButton.click();
 
         WebElement logout = driver.findElement(By.xpath("/html/body/div[1]/div/div"));
-        String successLogoutMsg="You logged out of the secure area!";
-        Assert.assertTrue(logout.getText().contains(successLogoutMsg));
+        Assert.assertTrue(logout.getText().contains(successP));
         driver.close();
+
     }
 
 
