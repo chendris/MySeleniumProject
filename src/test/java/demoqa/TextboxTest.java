@@ -21,6 +21,10 @@ public class TextboxTest {
 
     @Test
     public void textboxTest(){
+
+        WebElement consent = driver.findElement(By.xpath("//button[@aria-label='Consent']"));
+        if(consent.isDisplayed())consent.click();
+
         WebElement name = driver.findElement(By.xpath("//input[@id='userName']"));
         name.sendKeys("Calin Andrei");
 

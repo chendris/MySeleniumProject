@@ -23,6 +23,9 @@ public class RadiobuttonTest {
     @Test
     public void radio(){
 
+        WebElement consent = driver.findElement(By.xpath("//button[@aria-label='Consent']"));
+        if(consent.isDisplayed())consent.click();
+
         WebElement radioYes = driver.findElement(By.xpath("//label[@for='yesRadio']"));
         radioYes.click();
 

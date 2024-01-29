@@ -21,6 +21,10 @@ public class CheckboxTest {
 
     @Test
     public void checkbox(){
+
+        WebElement consent = driver.findElement(By.xpath("//button[@aria-label='Consent']"));
+        if(consent.isDisplayed())consent.click();
+
         WebElement expand = driver.findElement(By.xpath("//button[@title='Expand all']"));
         expand.click();
 
